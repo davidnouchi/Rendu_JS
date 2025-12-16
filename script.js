@@ -5,6 +5,7 @@
 const touBon = document.getElementById("name");
 const hero = document.getElementById("hero");
 const patisseries = document.getElementById("patisseries");
+const avantages = document.getElementById("cardAvantage")
 const services = document.getElementById("services");
 const temoignages = document.getElementById("temoignages");
 
@@ -14,11 +15,13 @@ const dataUrl = `https://js-dynamic-portfolio-data-makerslab-emlyon-cdweb-8f8315
 
 fetch(dataUrl)
     .then(response => response.json())
-    .then(data => {
+    .then(objet => {
         // 1 a) console.log(data.produits) pour vérifier si on a bien récupéré les données
 
-        console.log('Données récupérées avec succès :', data);
+        console.log('Données récupérées avec succès :', objet);
 
+        console.log(objet.nomCommercial);
+        console.log(objet.phraseAccroche);
 
         // hero => 
         // 1.b) Créer les éléments HTML suivants dans un inner.html dans l'id "hero":
@@ -26,22 +29,29 @@ fetch(dataUrl)
         //  <p> phrase d'accroche </p>
         // <button>Découvrez nos créations</button>
         hero.innerHTML = `
-<h1>${nomCommercial}</h1>
-<p> ${phraseAccroche} </p>
-<button>Découvrez nos créations</button>
+            <h1>${objet.nomCommercial}</h1>
+            <p> ${objet.phraseAccroche} </p>
+            <button>Découvrez nos créations</button>
 `
-        hero.appendChild(hero)
+
+
+
+        // creer une card document.create element
+        // inserer le contenu avec le jeu de données textContent
+        // le mettre dans le container (append child)
 
         // avantagesClients =>
-        // 5) for each pour chaque objet du tableau data.avantagesClients pour récupérer chaque avantagesClients"
-        // 6) récupérer la div avec l'id "cardAvantage"
 
-        // 6.a) Créer les éléments HTML : 
-        // 6.b) Créer une div pour accueillir tous les éléments de notre card (div type card)
-        // Dans l'id "patisseries" :
-        // <img src="image-url" alt="">
-        // <h3>nom du produit</h3>
-        // <p>description</p>
+        objet.avantagesClients.forEach(avantage => {
+            let div = document.createElement("div");
+            let h3 = document.createElement("h3");
+            h3.textContent = avantage;
+            div.appendChild(h3);
+            avantages.appendChild(div);
+        });
+
+
+
 
         // Patisseries => 
         // 5) for each pour chaque objet du tableau data.produits pour récupérer "nom" puis "description" et "image-url"
@@ -52,5 +62,13 @@ fetch(dataUrl)
         // <img src="image-url" alt="">
         // <h3>nom du produit</h3>
         // <p>description</p>
+
+        objet.produits.forEach(element => {
+            produits.forEach(produit => {
+                let card = document.createElement("div")
+                let nom = document.createElement("h2")
+
+            });
+        });
 
     });
