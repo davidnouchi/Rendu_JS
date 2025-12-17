@@ -1,9 +1,14 @@
 header {
     display: flex;
     justify-content: space-between;
+    background-color: white;
 }
 
-.hero {
+.hero_section {
     display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-image: url(https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvc2s3NjQxLWltYWdlLWt3dng3OWk4LmpwZw.jpg);
+    height: 500px;
     justify-content: center;
 }
