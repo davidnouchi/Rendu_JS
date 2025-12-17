@@ -20,8 +20,6 @@ fetch(dataUrl)
 
         console.log('Données récupérées avec succès :', objet);
 
-        console.log(objet.nomCommercial);
-        console.log(objet.phraseAccroche);
 
         // hero => 
         // 1.b) Créer les éléments HTML suivants dans un inner.html dans l'id "hero":
@@ -35,12 +33,13 @@ fetch(dataUrl)
 `
 
 
-
         // creer une card document.create element
         // inserer le contenu avec le jeu de données textContent
         // le mettre dans le container (append child)
 
         // avantagesClients =>
+
+        // Autre méthode que le innerHTML
 
         objet.avantagesClients.forEach(avantage => {
             let div = document.createElement("div");
@@ -51,7 +50,7 @@ fetch(dataUrl)
         });
 
 
-
+        // Je trouve cette méthode plus claire donc je continue avec.
 
         // Patisseries => 
         // 5) for each pour chaque objet du tableau data.produits pour récupérer "nom" puis "description" et "image-url"
@@ -63,12 +62,46 @@ fetch(dataUrl)
         // <h3>nom du produit</h3>
         // <p>description</p>
 
-        objet.produits.forEach(element => {
-            produits.forEach(produit => {
-                let card = document.createElement("div")
-                let nom = document.createElement("h2")
-
-            });
+        objet.produits.forEach(produit => {
+            let card = document.createElement("div");
+            let nom = document.createElement("h3");
+            let image = document.createElement("img");
+            let description = document.createElement("p");
+            nom.textContent = produit.nom;
+            image.src = produit["image-url"];
+            description.textContent = produit.description;
+            card.appendChild(nom);
+            card.appendChild(image);
+            card.appendChild(description);
+            patisseries.appendChild(card);
         });
 
+        objet.services.forEach(service => {
+            let carte = document.createElement("div");
+            let name = document.createElement("h3");
+            let desc = document.createElement("p");
+            name.textContent = service.nom;
+            desc.textContent = service.description;
+            carte.appendChild(name);
+            carte.appendChild(desc);
+            services.appendChild(carte);
+
+
+            objet.temoignages.forEach(temoignage => {
+                let cart = document.createElement("div");
+                let prenom = document.createElement("h3");
+                let typeExperience = document.createElement("h4")
+                let commentaire = document.createElement("p");
+                let note = document.createElement("p");
+                prenom.textContent = temoignage.prenom;
+                typeExperience.textContent = temoignage.typeExperience;
+                commentaire.textContent = temoignage.commentaire;
+                note.textContent = temoignage.note;
+                cart.appendChild(prenom);
+                cart.appendChild(typeExperience);
+                cart.appendChild(commentaire);
+                cart.appendChild(note);
+                temoignages.appendChild(cart);
+            });
+        });
     });
