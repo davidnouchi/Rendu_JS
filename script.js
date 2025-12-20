@@ -2,9 +2,8 @@
 // 1) Créer des sections avec des ID dans le HTML dont une section "hero"
 // 2) Récupérer les ID de ces sections avec getelementByID dans le JS
 
-const touBon = document.getElementById("name");
 const hero = document.getElementById("hero");
-const patisseries = document.getElementById("patisseries");
+const patisseries = document.getElementById("cardPatisseries");
 const avantages = document.getElementById("cardAvantage")
 const services = document.getElementById("services");
 const temoignages = document.getElementById("temoignages");
